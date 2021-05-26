@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS goods;
+
+CREATE TABLE goods (
+    id SERIAL PRIMARY KEY,
+    time_sale TIMESTAMP
+);
+
+INSERT INTO goods(time_sale) VALUES 
+('2020-05-18 10:00:00'),
+('2020-05-19 11:00:00'),
+('2020-05-20 12:00:00'),
+('2020-05-21 13:00:00'),
+('2020-05-21 14:00:00');
+
+SELECT id, time_sale::DATE FROM goods
+WHERE (EXTRACT(HOUR FROM time_sale) BETWEEN 12 AND 14);
